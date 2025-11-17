@@ -2,7 +2,8 @@
    GLOBAL RESET + BASE
    =============================== */
 
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   border: none;
@@ -17,7 +18,7 @@ html, body {
   --card: #111821;
   --accent: #6ee7b7;
   --muted: #9aa6b2;
-  --glass: rgba(255,255,255,0.03);
+  --glass: rgba(255, 255, 255, 0.03);
 }
 
 /* ===============================
@@ -37,7 +38,7 @@ html, body {
 .admin-sidebar {
   width: 20%;
   background: linear-gradient(180deg, rgba(0, 0, 0, 0.803), rgba(0, 0, 0, 0.829));
-  border-right: 1px solid rgba(255,255,255,0.05);
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
   padding: 28px 20px;
   display: flex;
   flex-direction: column;
@@ -76,17 +77,17 @@ html, body {
 }
 
 .nav-item:hover {
-  background: rgba(255,255,255,0.05);
+  background: rgba(255, 255, 255, 0.05);
   color: var(--accent);
 }
 
 .nav-item.active {
-  background: rgba(110,231,183,0.12);
+  background: rgba(110, 231, 183, 0.12);
   color: var(--accent);
 }
 
 .nav-item.logout:hover {
-  background: rgba(255,80,80,0.15);
+  background: rgba(255, 80, 80, 0.15);
   color: #ff7070;
 }
 
@@ -116,7 +117,7 @@ html, body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid rgba(255,255,255,0.04);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
 }
 
 .admin-topbar h3 {
@@ -142,320 +143,339 @@ html, body {
   display: flex;
   gap: 24px;
   flex-wrap: wrap;
+  
 }
 
-/* ===============================
+
+  /* ===============================
    CARDS
    =============================== */
 
-.card {
-  background: var(--card);
-  padding: 32px;
-  border-radius: 16px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.35);
-  color: #e9f1f8;
-}
-
-.card.wide { width: 100%; }
-.card.narrow { width: 360px; }
-
-/* ===============================
-   PROFILE CARD
-   =============================== */
-
-.profile-card {
-  display: flex;
-  gap: 18px;
-  align-items: center;
-  flex: 1;
-}
-
-.pfp-wrap.small {
-  width: 96px;
-  height: 96px;
-  border-radius: 50%;
-  overflow: hidden;
-  background: rgba(255,255,255,0.06);
-  border: 2px solid rgba(255,255,255,0.08);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-#adminPfp {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* ===============================
-   PROJECTS LIST
-   =============================== */
-
-.projects-list {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.project-row {
-  background: rgba(255,255,255,0.03);
-  padding: 16px;
-  border-radius: 12px;
-  display: flex;
-  gap: 14px;
-  align-items: center;
-}
-
-.project-row:hover {
-  background: rgba(255,255,255,0.07);
-}
-
-/* ===============================
-   INPUTS
-   =============================== */
-
-input, textarea {
-  width: 90%;
-  padding: 12px;
-  border-radius: 10px;
-  border: 1px solid rgba(255,255,255,0.08);
-  background: rgba(255,255,255,0.02);
-  color: #cfd9e3;
-  margin-bottom: 12px;
-  font-size: 14px;
-}
-
-input[type="file"] {
-  all: unset;
-}
-
-/* ===============================
-   BUTTONS
-   =============================== */
-
-.btn {
-  padding: 10px 18px;
-  border-radius: 10px;
-  background: var(--accent);
-  color: #041017;
-  border: none;
-  cursor: pointer;
-  font-weight: 700;
-  transition: 0.2s;
-}
-
-.btn:hover { opacity: 0.85; }
-
-.btn.ghost {
-  background: transparent;
-  border: 1px solid rgba(255,255,255,0.12);
-  color: var(--muted);
-}
-
-.btn.danger { background: #ff4c4c; color: white; }
-
-.btn.danger:hover { background: #ff3434; }
-
-/* ===============================
-   MODAL
-   =============================== */
-
-.modal-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.55);
-  display: none;
-  z-index: 50;
-}
-
-.modal {
-  position: fixed;
-  inset: 0;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  z-index: 60;
-}
-
-.modal-card {
-  width: 480px;
-  background: var(--card);
-  padding: 30px;
-  border-radius: 18px;
-  box-shadow: 0 18px 60px rgba(0,0,0,0.6);
-}
-
-.hidden { display: none; }
-
-/* ===============================
-   CUSTOM FILE INPUT
-   =============================== */
-
-.file-input {
-  position: relative;
-  width: 90%;
-  padding-top: 10px;
-  padding-bottom: 10px;
-}
-
-.file-input input[type="file"] {
-  margin-top: 2%;
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-  width: 90%;
-  height: 100%;
-  cursor: pointer;
-}
-
-.file-display {
-  width: 90%;
-  padding: 12px;
-  border-radius: 10px;
-  border: 1px solid rgba(255,255,255,0.08);
-  background: rgba(255,255,255,0.03);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  color: rgba(200,210,220,0.8);
-}
-
-.file-name {
-  flex: 1;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.file-button {
-  padding: 8px 16px;
-  background: var(--accent);
-  color: #041017;
-  font-weight: 700;
-  border-radius: 8px;
-  cursor: pointer;
-  white-space: nowrap;
-}
-
-/* ===============================
-   STATS CARD
-   =============================== */
-
-.stats-clean {
-  width: 100%;
-  padding: 22px 30px;
-  border-radius: 16px;
-  background: var(--card);
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-
-.stats-number {
-  font-size: 28px;
-  font-weight: 800;
-  color: var(--accent);
-}
-
-.stats-label {
-  font-size: 13px;
-  color: var(--muted);
-}
-
-.stats-separator {
-  width: 2px;
-  height: 46px;
-  background: rgba(255,255,255,0.06);
-  border-radius: 30px;
-}
-
-/* ===============================
-   RESPONSIVE
-   =============================== */
-
-/* ===============================
-   HAMBURGER MENU (for phone)
-=============================== */
-.hamburger {
-  display: none;
-  width: 28px;
-  height: 22px;
-  flex-direction: column;
-  justify-content: space-between;
-  cursor: pointer;
-}
-
-.hamburger span {
-  height: 3px;
-  width: 100%;
-  background: var(--accent);
-  border-radius: 4px;
-}
-
-/* ===============================
-   MOBILE SIDEBAR SLIDE
-=============================== */
-@media (max-width: 900px) {
-
-  /* Reduce card padding */
-  .experience-section.card,
-  .experience-section {
-    padding: 20px !important;
+  .card {
+    background: var(--card);
+    padding: 32px;
+    border-radius: 16px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+    color: #e9f1f8;
   }
 
-  /* Title + subtitle spacing */
-  .experience-section h3 {
-    font-size: 18px;
-    margin-bottom: 6px;
-  }
-
-  .experience-section p.muted {
-    font-size: 13px;
-    line-height: 1.4;
-    margin-bottom: 12px;
-  }
-
-  /* Inputs full width, proper spacing */
-  .experience-section input,
-  .experience-section textarea {
-    width: 90% !important;
-    padding: 12px;
-    margin-bottom: 10px;
-    font-size: 14px;
-  }
-
-  /* Make textarea smaller height */
-  .experience-section textarea {
-    height: 80px;
-  }
-
-  /* Add button centered */
-  .experience-section .btn.small,
-  #addExperienceBtn {
-    width: 120px;
-    margin: 10px auto 0 auto;
-    display: block;
-    text-align: center;
-  }
-
-  /* Prevent card from being too wide */
-  #experience {
+  .card.wide {
     width: 90%;
   }
 
-  /* Slight rounding */
-  .experience-section.card {
-    border-radius: 14px;
+  .card.narrow {
+    width: 360px;
   }
-}
-  
+
+  /* ===============================
+   PROFILE CARD
+   =============================== */
+
+  .profile-card {
+    display: flex;
+    gap: 18px;
+    align-items: center;
+    flex: 1;
+  }
+
+  .pfp-wrap.small {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.06);
+    border: 2px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #adminPfp {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* ===============================
+   PROJECTS LIST
+   =============================== */
+
+  .projects-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .project-row {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 16px;
+    border-radius: 12px;
+    display: flex;
+    gap: 14px;
+    align-items: center;
+  }
+
+  .project-row:hover {
+    background: rgba(255, 255, 255, 0.07);
+  }
+
+  /* ===============================
+   INPUTS
+   =============================== */
+
+  input,
+  textarea {
+    width: 90%;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.02);
+    color: #cfd9e3;
+    margin-bottom: 12px;
+    font-size: 14px;
+  }
+
+  input[type="file"] {
+    all: unset;
+  }
+
+  /* ===============================
+   BUTTONS
+   =============================== */
+
+  .btn {
+    padding: 10px 18px;
+    border-radius: 10px;
+    background: var(--accent);
+    color: #041017;
+    border: none;
+    cursor: pointer;
+    font-weight: 700;
+    transition: 0.2s;
+  }
+
+  .btn:hover {
+    opacity: 0.85;
+  }
+
+  .btn.ghost {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: var(--muted);
+  }
+
+  .btn.danger {
+    background: #ff4c4c;
+    color: white;
+  }
+
+  .btn.danger:hover {
+    background: #ff3434;
+  }
+
+  /* ===============================
+   MODAL
+   =============================== */
+
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    display: none;
+    z-index: 50;
+  }
+
+  .modal {
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 60;
+  }
+
+  .modal-card {
+    width: 480px;
+    background: var(--card);
+    padding: 30px;
+    border-radius: 18px;
+    box-shadow: 0 18px 60px rgba(0, 0, 0, 0.6);
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  /* ===============================
+   CUSTOM FILE INPUT
+   =============================== */
+
+  .file-input {
+    position: relative;
+    width: 90%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .file-input input[type="file"] {
+    margin-top: 2%;
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    width: 90%;
+    height: 100%;
+    cursor: pointer;
+  }
+
+  .file-display {
+    width: 90%;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.03);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: rgba(200, 210, 220, 0.8);
+  }
+
+  .file-name {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .file-button {
+    padding: 8px 16px;
+    background: var(--accent);
+    color: #041017;
+    font-weight: 700;
+    border-radius: 8px;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+
+  /* ===============================
+   STATS CARD
+   =============================== */
+
+  .stats-clean {
+    width: 100%;
+    padding: 22px 30px;
+    border-radius: 16px;
+    background: var(--card);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .stats-number {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--accent);
+  }
+
+  .stats-label {
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  .stats-separator {
+    width: 2px;
+    height: 46px;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 30px;
+  }
+
+  /* ===============================
+   RESPONSIVE
+   =============================== */
+
+  /* ===============================
+   HAMBURGER MENU (for phone)
+=============================== */
+  .hamburger {
+    display: none;
+    width: 28px;
+    height: 22px;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+  }
+
+  .hamburger span {
+    height: 3px;
+    width: 100%;
+    background: var(--accent);
+    border-radius: 4px;
+  }
+
+  /* ===============================
+   MOBILE SIDEBAR SLIDE
+=============================== */
+  @media (max-width: 900px) {
+
+    /* Reduce card padding */
+    .experience-section.card,
+    .experience-section {
+      padding: 20px !important;
+    }
+
+    /* Title + subtitle spacing */
+    .experience-section h3 {
+      font-size: 18px;
+      margin-bottom: 6px;
+    }
+
+    .experience-section p.muted {
+      font-size: 13px;
+      line-height: 1.4;
+      margin-bottom: 12px;
+    }
+
+    /* Inputs full width, proper spacing */
+    .experience-section input,
+    .experience-section textarea {
+      width: 90% !important;
+      padding: 12px;
+      margin-bottom: 10px;
+      font-size: 14px;
+    }
+
+    /* Make textarea smaller height */
+    .experience-section textarea {
+      height: 80px;
+    }
+
+    /* Add button centered */
+    .experience-section .btn.small,
+    #addExperienceBtn {
+      width: 120px;
+      margin: 10px auto 0 auto;
+      display: block;
+      text-align: center;
+    }
+
+    /* Prevent card from being too wide */
+    #experience {
+      width: 90%;
+    }
+
+    /* Slight rounding */
+    .experience-section.card {
+      border-radius: 14px;
+    }
+  }
+
   .hamburger {
     display: flex;
   }
-.top-left{
-  display: none;
-}
+
+  .top-left {
+    display: none;
+  }
+
   .admin-sidebar {
     transform: translateX(-100%);
     transition: 0.35s ease;
@@ -466,18 +486,19 @@ input[type="file"] {
     height: 100vh;
     z-index: 999;
   }
-  /* Overlay behind mobile sidebar */
-#sidebarOverlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.55);
-  display: none;
-  z-index: 998;
-}
 
-#sidebarOverlay.show {
-  display: block;
-}
+  /* Overlay behind mobile sidebar */
+  #sidebarOverlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    display: none;
+    z-index: 998;
+  }
+
+  #sidebarOverlay.show {
+    display: block;
+  }
 
 
   .admin-sidebar.open {
@@ -494,154 +515,162 @@ input[type="file"] {
   }
 
 
-.skills-table {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin-top: 10px;
-}
+  .skills-table {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 10px;
+  }
 
-.skill-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: rgba(0, 0, 0, 0.647);
-  padding: 12px;
-  border-radius: 10px;
-}
+  .skill-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.647);
+    padding: 12px;
+    border-radius: 10px;
+  }
 
-.skill-row input {
-  padding: 8px 10px;
-  border-radius: 6px;
-  border: 1px solid rgba(255,255,255,0.08);
-  background: rgba(255,255,255,0.03);
-  color: #e5eef6;
-  width: 140px;
-}
+  .skill-row input {
+    padding: 8px 10px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.03);
+    color: #e5eef6;
+    width: 140px;
+  }
 
-.skill-edit-form {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-}
+  .skill-edit-form {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
 
-.btn.small {
-  padding: 6px 12px;
-  font-size: 13px;
-}
+  .btn.small {
+    padding: 6px 12px;
+    font-size: 13px;
+  }
 
-.btn.danger {
-  background: #ff4d4d;
-  color: #fff;
-}
+  .btn.danger {
+    background: #ff4d4d;
+    color: #fff;
+  }
 
-.btn.danger:hover {
-  background: #ff6767;
-}
-.admin-content .admin-row {
-    margin-bottom: 40px;   /* space between each section */
-}
+  .btn.danger:hover {
+    background: #ff6767;
+  }
 
-.card {
-    margin-bottom: 25px;   /* space inside each section */
-}
-.btn.small{
-  width: 20%;
-  margin: auto;
-}
-#experience{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-/* Two-column layout for settings, experience, contact */
-.two-col {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 24px;
-}
+  .admin-content .admin-row {
+    margin-bottom: 40px;
+    /* space between each section */
+  }
 
-.setting-card {
-  flex: 1;
-  min-width: 300px;
-  max-width: 30%;
-}
-/* ============================
+  .card {
+    margin-bottom: 25px;
+    /* space inside each section */
+  }
+
+  .btn.small {
+    width: 20%;
+    margin: auto;
+  }
+
+  #experience {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* Two-column layout for settings, experience, contact */
+  .two-col {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+
+  .setting-card {
+    flex: 1;
+    min-width: 300px;
+    max-width: 30%;
+  }
+
+  /* ============================
    MOBILE FIXES (max-width 600px)
    ============================ */
-@media (max-width: 600px) {
-    
+  @media (max-width: 600px) {
+
     /* Main layout */
     .admin-container {
-        padding: 10px !important;
+      padding: 10px !important;
     }
 
     /* Cards */
     .card {
-        width: 100% !important;
-        margin: 0 auto 20px auto !important;
-        padding: 15px !important;
-        border-radius: 14px !important;
+      width: 100% !important;
+      margin: 0 auto 20px auto !important;
+      padding: 15px !important;
+      border-radius: 14px !important;
     }
 
     /* Profile card layout */
     .profile-card {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
     }
 
     .profile-card img {
-        width: 110px !important;
-        height: 110px !important;
-        margin-bottom: 10px;
+      width: 110px !important;
+      height: 110px !important;
+      margin-bottom: 10px;
     }
 
     .profile-right {
-        width: 100%;
+      width: 100%;
     }
 
     .profile-actions {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
     }
 
     .profile-actions form {
-        width: 100%;
+      width: 100%;
     }
 
     .profile-actions button,
     .profile-actions input[type="file"] {
-        width: 100% !important;
+      width: 100% !important;
     }
 
     /* Search bar inside Projects */
     #searchProjects {
-        width: 100% !important;
+      width: 90% !important;
     }
 
     /* Username + Password cards */
     form input {
-        width: 90% !important;
+      width: 90% !important;
     }
 
     form button {
-        width: 90% !important;
-        margin-top: 8px;
+      width: 90% !important;
+      margin-top: 8px;
     }
 
     /* Side menu (hamburger) */
     .sidebar {
-        width: 220px !important;
+      width: 220px !important;
     }
 
     .sidebar a {
-        font-size: 16px !important;
-        padding: 12px !important;
+      font-size: 16px !important;
+      padding: 12px !important;
     }
 
-}
+  }
+  
