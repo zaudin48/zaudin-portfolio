@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Projects — Zaudin</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+
+<body class="dark">
+  <!-- mobile menuBtn -->
+   <div id="mobileMenu" class="mobile-menu">
+  <a href="/">Home</a>
+  <a href="/projects">Projects</a>
+  <a href="/contact">Contact</a>
+</div>
+
+  <!-- NAVBAR -->
+  <header class="site-header">
+      <button id="menuBtn" class="hamburger">
+  ☰
+</button>
+    <nav class="nav">
+      <a href="/">Home</a>
+      <a href="/projects" class="active">Projects</a>
+      <a href="/contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="page-main">
+
+    <section class="projects-preview">
+      <h1 style="margin-bottom: 20px;">My Projects</h1>
+
+      <div id="projectsGrid" class="grid"></div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    © <span id="year"></span> Zaudin
+  </footer>
+
+  <!-- MAIN JS -->
+  <script>
+    // Set year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const grid = document.getElementById("projectsGrid");
+
+    // Load from backend API
+    fetch("/api/projects")
+      .then(r => r.json())
+      .then(items => {
+        if (!items || items.length === 0) {
+          // Show DEMO CARD if DB empty
+          grid.innerHTML = `
+            <div class="card">
+              <img src="https://images.unsplash.com/photo-1551033406-611cf9a28f67?w=600"
+                   alt="Demo project">
+              <h3>Demo Project</h3>
+              <p class="muted">
+                This is a sample project card. You can replace it later from the Admin Panel.
+              </p>
+              <p><a class="btn ghost" href="#" onclick="alert('Demo only!')">Open</a></p>
+            </div>
+          `;
+          return;
+        }
+
+        // Render projects from DB
+        items.forEach(p => {
+          const card = document.createElement("div");
+          card.className = "card";
+
+          card.innerHTML = `
+            ${p.img_url ? `<img src="${p.img_url}" alt="${p.title}">` : ""}
+            <h3>${escapeHtml(p.title)}</h3>
+            <p class="muted">${escapeHtml(p.description || "")}</p>
+            ${p.link ? `<p><a class="btn ghost" href="${p.link}" target="_blank">Open</a></p>` : ""}
+          `;
+
+          grid.appendChild(card);
+
+          // card animation
+          gsap.from(card, { opacity: 0, y: 20, duration: 0.6, ease: "power2.out" });
+        });
+      });
+
+    // HTML escape helper
+    function escapeHtml(str) {
+      if (!str) return "";
+      return str
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;");
+    }
+  </script>
+<script>
+document.addEventListener("keydown", (e) => {
+    if (e.shiftKey && e.key.toLowerCase() === "l") {
+        window.location.href = "/super-secret-login";
+    }
+});
+
+// MOBILE: triple tap
+let tapCount = 0;
+let tapTimer;
+document.addEventListener("touchstart", () => {
+    tapCount++;
+    clearTimeout(tapTimer);
+    tapTimer = setTimeout(() => tapCount = 0, 350);
+
+    if (tapCount >= 3) {
+        window.location.href = "/super-secret-login";
+        tapCount = 0;
+    }
+});
+</script>
+<script>
+const menuBtn = document.getElementById("menuBtn");
+const menu = document.getElementById("mobileMenu");
+
+// Create backdrop
+const backdrop = document.createElement("div");
+backdrop.className = "menu-backdrop";
+document.body.appendChild(backdrop);
+
+menuBtn.addEventListener("click", () => {
+  menu.classList.toggle("active");
+  backdrop.classList.toggle("active");
+});
+
+backdrop.addEventListener("click", () => {
+  menu.classList.remove("active");
+  backdrop.classList.remove("active");
+});
+</script>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Contact • {{ contact.name }}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body class="contact-body">
+    <!-- mobile menuBtn -->
+   <div id="mobileMenu" class="mobile-menu">
+  <a href="/">Home</a>
+  <a href="/projects">Projects</a>
+  <a href="/contact">Contact</a>
+</div>
+
+  <!-- NAVBAR -->
+  <header class="site-header">
+      <button id="menuBtn" class="hamburger">
+  ☰
+</button>
+    <nav class="nav">
+      <a href="/">Home</a>
+      <a href="/projects" class="active">Projects</a>
+      <a href="/contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- MAIN CONTACT SECTION -->
+  <main class="contact-container">
+
+    <!-- LEFT SIDE: TEXT + DETAILS -->
+    <section class="contact-left animate-fade">
+      
+      <h1 class="contact-title">{{ contact.hero_title }}</h1>
+      <p class="contact-sub">{{ contact.hero_sub }}</p>
+
+      <div class="contact-card glass">
+        <h3>Contact Details</h3>
+
+        <p class="cd-name">{{ contact.name }}</p>
+        <p><span class="cd-label">Phone / WhatsApp: </span><a href="tel:{{ contact.phone }}">{{ contact.phone }}</a></p>
+        
+        <p><span class="cd-label">Email: </span><a href="mailto:{{ contact.email }}">{{ contact.email }}</a></p>
+
+        <p class="cd-label">Address:</p>
+        <p class="cd-address">{{ contact.address }}</p>
+
+        <a href="{{ contact.wa_link }}" target="_blank" class="wa-btn">💬 Open WhatsApp</a>
+      </div>
+
+    </section>
+
+
+    <!-- RIGHT SIDE: FORM -->
+    <section class="contact-right animate-slide">
+      <div class="contact-card glass">
+        <h3>Send a message</h3>
+
+        <form id="publicContactForm" action="/contact/send" method="POST" class="contact-form">
+
+          <input name="name" placeholder="Your name">
+          <input name="email" type="email" placeholder="Your email" required>
+          <input name="phone" placeholder="Phone (optional)">
+          <textarea name="message" rows="5" placeholder="Your message" required></textarea>
+
+          <button class="send-btn" type="submit">Send</button>
+          <div id="sendStatus" class="send-status"></div>
+
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+
+<script>
+document.getElementById('publicContactForm')?.addEventListener('submit', function(e){
+  e.preventDefault();
+  const form = e.target;
+  const data = new FormData(form);
+
+  const status = document.getElementById('sendStatus');
+  status.textContent = "Sending...";
+
+  fetch(form.action, { method:'POST', body:data })
+    .then(r => r.text())
+    .then(t => {
+      status.textContent = t;
+      form.reset();
+
+      setTimeout(() => status.textContent = "", 4000);
+    })
+    .catch(() => {
+      status.textContent = "Network error";
+    });
+});
+</script>
+ <script>
+document.addEventListener("keydown", (e) => {
+    if (e.shiftKey && e.key.toLowerCase() === "l") {
+        window.location.href = "/super-secret-login";
+    }
+});
+
+// MOBILE: triple tap
+let tapCount = 0;
+let tapTimer;
+document.addEventListener("touchstart", () => {
+    tapCount++;
+    clearTimeout(tapTimer);
+    tapTimer = setTimeout(() => tapCount = 0, 350);
+
+    if (tapCount >= 3) {
+        window.location.href = "/super-secret-login";
+        tapCount = 0;
+    }
+});
+</script>
+<script>
+const menuBtn = document.getElementById("menuBtn");
+const menu = document.getElementById("mobileMenu");
+
+// Create backdrop
+const backdrop = document.createElement("div");
+backdrop.className = "menu-backdrop";
+document.body.appendChild(backdrop);
+
+menuBtn.addEventListener("click", () => {
+  menu.classList.toggle("active");
+  backdrop.classList.toggle("active");
+});
+
+backdrop.addEventListener("click", () => {
+  menu.classList.remove("active");
+  backdrop.classList.remove("active");
+});
+</script>
+
+</body>
+</html>

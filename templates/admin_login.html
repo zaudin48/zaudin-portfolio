@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Login • Zaudin Admin</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+  <style>
+    body {
+      background: #0b0f14;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      color: white;
+      font-family: Inter, sans-serif;
+    }
+
+    .login-box {
+      width: 360px;
+      background: #111821;
+      padding: 32px;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+      text-align: center;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      font-weight: 700;
+      color: #6ee7b7;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px 14px;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.05);
+      color: white;
+      margin-bottom: 14px;
+      font-size: 15px;
+    }
+
+    input::placeholder {
+      color: #9aa6b2;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 12px;
+      background: #6ee7b7;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 700;
+      color: #041017;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      opacity: 0.85;
+    }
+
+    .muted {
+      margin-top: 10px;
+      font-size: 13px;
+      color: #9aa6b2;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="login-box">
+    <h2>Admin Login</h2>
+
+    <form action="/admin/login" method="POST">
+      <input type="text" name="username" placeholder="Username" required>
+      <input type="password" name="password" placeholder="Password" required>
+      <button class="btn" type="submit">Login</button>
+    </form>
+
+    <div class="muted">Protected Area</div>
+  </div>
+
+</body>
+</html>
